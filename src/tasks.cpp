@@ -24,7 +24,7 @@ int **allocate_2d_array(int num_rows, int num_cols, int init_value) {
 
     if (num_rows>0 && num_cols>0) {
         int **array_2d = new int *[num_rows];
-        for (int row_index = 0; row_index < num_rows; ++row_index) {
+        for (int row_index = 0; row_index < num_rows; row_index++) {
             array_2d[row_index] = new int[num_cols];
         }
 
@@ -41,13 +41,12 @@ int **allocate_2d_array(int num_rows, int num_cols, int init_value) {
 
 // Задание 3
 bool copy_2d_array(int **arr_2d_source, int **arr_2d_target, int num_rows, int num_cols) {
-    if (arr_2d_source && arr_2d_target && num_rows <= 0 && num_cols <= 0) {
-
-    for (int row_index = 0; row_index < num_rows; row_index++) {
-        for (int column_index = 0; column_index < num_cols; column_index++) {
-            arr_2d_target[row_index][column_index] = arr_2d_source[row_index][column_index];
+    if (arr_2d_source && arr_2d_target && num_rows > 0 && num_cols > 0) {
+        for (int row_index = 0; row_index < num_rows; row_index++) {
+            for (int column_index = 0; column_index < num_cols; column_index++) {
+                arr_2d_target[row_index][column_index] = arr_2d_source[row_index][column_index];
+                }
             }
-        }
         return true;
     }
     return false;
