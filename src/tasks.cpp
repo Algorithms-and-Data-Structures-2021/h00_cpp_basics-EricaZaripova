@@ -22,18 +22,21 @@ void swap_args(int *lhs, int *rhs) {
 // Задание 2
 int **allocate_2d_array(int num_rows, int num_cols, int init_value) {
 
-    int **array_2d = new int *[num_rows];
-    for (int row_index = 0; row_index < num_rows; ++row_index) {
-        array_2d[row_index] = new int[num_cols];
-    }
-
-    for (int row_index = 0; row_index < num_rows; row_index++) {
-        for (int column_index = 0; column_index < num_cols; column_index++) {
-            array_2d[row_index][column_index] = init_value;
+    if (num_rows>0 && num_cols>0) {
+        int **array_2d = new int *[num_rows];
+        for (int row_index = 0; row_index < num_rows; ++row_index) {
+            array_2d[row_index] = new int[num_cols];
         }
-    }
 
-    return array_2d;
+        for (int row_index = 0; row_index < num_rows; row_index++) {
+            for (int column_index = 0; column_index < num_cols; column_index++) {
+                array_2d[row_index][column_index] = init_value;
+            }
+        }
+
+        return array_2d;
+    }
+    return nullptr;
 }
 
 // Задание 3
@@ -43,9 +46,9 @@ bool copy_2d_array(int **arr_2d_source, int **arr_2d_target, int num_rows, int n
     for (int row_index = 0; row_index < num_rows; row_index++) {
         for (int column_index = 0; column_index < num_cols; column_index++) {
             arr_2d_target[row_index][column_index] = arr_2d_source[row_index][column_index];
+            }
         }
-    }
-    return true;
+        return true;
     }
     return false;
 }
